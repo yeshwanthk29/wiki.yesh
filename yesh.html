@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia Search</title>
+</head>
+<body>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1280px-Wikipedia-logo-v2.svg.png" alt="Wikipedia Logo" width="200">
+  </div>
+  
+  <div style="text-align: center; margin-top: 30px;">
+    <h1>Search Wikipedia</h1>
+    <input type="text" id="searchBox" placeholder="Type something..." style="padding: 10px; width: 60%; font-size: 16px;">
+    <button onclick="searchWikipedia()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px;">Search</button>
+  </div>
+
+  <div id="message" style="text-align: center; margin-top: 20px; font-size: 18px; color: #555;"></div>
+
+  <script>
+    function searchWikipedia() {
+      const query = document.getElementById('searchBox').value;
+      if (query.trim()) {
+        window.open(`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}`, '_blank');
+      }
+    }
+
+    function showMessage() {
+      const input = document.getElementById('searchBox').value;
+      const messageElement = document.getElementById('message');
+      
+      if (input.trim()) {
+        messageElement.textContent = `You are searching for: "${input}"`;
+      } else {
+        messageElement.textContent = '';
+      }
+    }
+
+    // Trigger the showMessage function on user input
+    document.getElementById('searchBox').addEventListener('input', showMessage);
+  </script>
+
+</body>
+</html>
